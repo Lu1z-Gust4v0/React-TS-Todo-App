@@ -73,4 +73,4 @@ async function updateTodoController(req: Request, res: Response): Promise<void> 
     }
 }
 
-export { getTodoController, addTodoController, deleteTodoController, updateTodoController }
+export { getTodosController, addTodoController, deleteTodoController, updateTodoController }
