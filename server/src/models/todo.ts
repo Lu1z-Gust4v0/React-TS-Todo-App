@@ -1,9 +1,9 @@
 import { Schema, model } from "mongoose"
-import { ITodo } from "../types/todo"
+import ITodo from "../types/todo"
 
 // Create schema
 const todoSchema = new Schema<ITodo>({
-    userId: {type: Schema.Types.ObjectId, required: true},
+    userId: {type: String, required: true},
     title: {type: String, required: true},
     description: {type: String, required: true},
     status: {type: Boolean, required: true},

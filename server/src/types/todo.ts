@@ -1,12 +1,8 @@
-import { Types } from "mongoose"
-
-type Id = Types.ObjectId
-
 interface ITodo {
-    userId: Id;
+    userId: string;
     title: string;
     description: string;
     status: boolean;
 }
 
-export { ITodo, Id }
+export default ITodo
