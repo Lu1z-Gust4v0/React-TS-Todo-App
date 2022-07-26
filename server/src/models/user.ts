@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose"
-import IUser from "../types/IUser"
+import IUser from "../types/user"
 
 
 // Create schema
