@@ -50,3 +50,5 @@ async function updateTodo(newData: ITodo, id: Id): Promise<ITodo | null> {
         throw new Error(err.message || "Failed to update todo")
     }
 }
+
+export { queryTodos, createTodo, deleteTodo, updateTodo }
