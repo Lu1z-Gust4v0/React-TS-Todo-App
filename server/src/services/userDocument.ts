@@ -1,6 +1,5 @@
 import IUser from "../types/user"
 import User from "../models/user"
-import { Id } from "../types/todo"
 
 
 async function queryUsers(filter?: any): Promise<IUser[]> {
@@ -42,21 +41,5 @@ async function createUser(data: IUser): Promise<IUser> {
     }
 }
 
-async function getUserId(_username: string): Promise<Id> {
-    try {
 
-        const user: IUser[] = await queryUsers({ username: _username})
-
-        // Throw an error if the query returns an empty array
-        if (user.length == 0) {
-            throw new Error(`${_username} is not a valid username`)
-        }
-
-        return user[0]._id
-
-    } catch (err: any) {
-        throw new Error(err.message || "Failed to get user id.")
-    }
-}
-
-export { queryUsers, createUser, getUserId }
+export { queryUsers, createUser }

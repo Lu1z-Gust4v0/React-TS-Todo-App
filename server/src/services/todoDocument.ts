@@ -1,4 +1,4 @@
-import { ITodo, Id } from "../types/todo";
+import ITodo from "../types/todo";
 import Todo from "../models/todo";
 
 
@@ -12,24 +12,26 @@ async function queryTodos(filter?: any): Promise<ITodo[]> {
     }
 }
 
-async function createTodo(data: ITodo): Promise<void> {
+async function createTodo(data: ITodo): Promise<ITodo> {
     try {
 
-        const newTodo = new Todo({
+        const todo = new Todo({
             userId: data.userId,
             title: data.title,
             description: data.description,
             status: data.status
         })
 
-        await newTodo.save()
+        const newTodo = await todo.save()
+
+        return newTodo
 
     } catch (err: any) {
         throw new Error(err.message || "Failed to create todo")
     }
 }
 
-async function deleteTodo(id: Id): Promise<ITodo | null> {
+async function deleteTodo(id: string): Promise<ITodo | null> {
     try {
         const deletedTodo: ITodo | null = await Todo.findByIdAndRemove({ _id: id})
 
@@ -40,7 +42,7 @@ async function deleteTodo(id: Id): Promise<ITodo | null> {
     }
 }
 
-async function updateTodo(newData: ITodo, id: Id): Promise<ITodo | null> {
+async function updateTodo(newData: ITodo, id: string): Promise<ITodo | null> {
     try {
         const updatedTodo: ITodo | null = await Todo.findByIdAndUpdate({ _id: id }, newData)
 
