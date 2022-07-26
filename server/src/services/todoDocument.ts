@@ -1,4 +1,4 @@
-import ITodo from "../types/todo";
+import { ITodo, Id } from "../types/todo";
 import Todo from "../models/todo";
 
 
@@ -16,6 +16,7 @@ async function createTodo(data: ITodo): Promise<void> {
     try {
 
         const newTodo = new Todo({
+            userId: data.userId,
             title: data.title,
             description: data.description,
             status: data.status
@@ -28,9 +29,9 @@ async function createTodo(data: ITodo): Promise<void> {
     }
 }
 
-async function deleteTodo(id: number): Promise<ITodo | null> {
+async function deleteTodo(id: Id): Promise<ITodo | null> {
     try {
-        const deletedTodo: ITodo | null = await Todo.findByIdAndRemove(id)
+        const deletedTodo: ITodo | null = await Todo.findByIdAndRemove({ _id: id})
 
         return deletedTodo
 
@@ -39,7 +40,7 @@ async function deleteTodo(id: number): Promise<ITodo | null> {
     }
 }
 
-async function updateTodo(newData: ITodo, id: number): Promise<ITodo | null> {
+async function updateTodo(newData: ITodo, id: Id): Promise<ITodo | null> {
     try {
         const updatedTodo: ITodo | null = await Todo.findByIdAndUpdate({ _id: id }, newData)
 
