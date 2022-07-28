@@ -13,7 +13,9 @@ async function getTodosController(req: Request, res: Response): Promise<void> {
         })
 
     } catch (err: any) {
-        throw new Error(err.message || "Unknown Error")
+        res.status(400).json({
+            message: err.message || "Unknown Error"
+        })    
     }
 
 }
@@ -32,7 +34,9 @@ async function addTodoController(req: Request, res: Response): Promise<void> {
         })
 
     } catch (err: any) {
-        throw new Error(err.message || "Unknown Error")
+        res.status(400).json({
+            message: err.message || "Unknown Error"
+        })
     }
 }
 
@@ -50,7 +54,9 @@ async function deleteTodoController(req: Request, res: Response): Promise<void> 
         })
 
     } catch (err: any) {
-        throw new Error(err.message || "Unknown Error")
+        res.status(400).json({
+            message: err.message || "Unknown Error"
+        })
     }
 }
 
@@ -69,7 +75,9 @@ async function updateTodoController(req: Request, res: Response): Promise<void> 
         })
 
     } catch (err: any) {
-        throw new Error(err.message || "Unknown Error")
+        res.status(400).json({
+            message: err.message || "Unknown Error"
+        })
     }
 }
 
