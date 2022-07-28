@@ -1,4 +1,5 @@
 import express, { Express } from "express"
+import cors from "cors"
 import { connect } from "mongoose"
 import { todoRouter } from "./routes/todoRoutes"
 import { userRouter } from "./routes/userRoutes"
@@ -11,6 +12,7 @@ const uri: string = "mongodb://localhost:27017/test"
 // The `express.json()` middleware parses the body of incoming post requests
 // except for HTML form post.
 app.use(express.json())
+app.use(cors())
 
 app.use(todoRouter)
 
