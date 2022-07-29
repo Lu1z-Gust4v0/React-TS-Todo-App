@@ -9,7 +9,7 @@ import {
 
 const router: Router = Router()
 
-router.get("/get-todos", getTodosController)
+router.get("/get-todos/:id", getTodosController)
 
 router.post("/add-todo", addTodoController)
 

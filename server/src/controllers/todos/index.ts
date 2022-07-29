@@ -5,10 +5,12 @@ import { queryTodos, createTodo, deleteTodo, updateTodo } from "../../services/t
 
 async function getTodosController(req: Request, res: Response): Promise<void> {
     try {
-        const todos: ITodo[] = await queryTodos()
+        
+        const id: string = req.params.id
+        const todos: ITodo[] = await queryTodos({ userId: id })
 
         res.status(200).json({
-            message: "Todos",
+            message: "Todos fetched sucessfully",
             todos: todos 
         })
 
