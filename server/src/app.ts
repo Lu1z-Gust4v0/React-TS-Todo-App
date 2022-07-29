@@ -20,7 +20,7 @@ app.use(userRouter)
 
 connect(uri).then(() => {
     app.listen(port, () => {
-        console.log(`[server]: Server listening at https://localhost:${port}`)
+        console.log(`[server]: Server listening at http://localhost:${port}`)
     })
 })
 .catch(err => {
