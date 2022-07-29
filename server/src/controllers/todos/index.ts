@@ -69,7 +69,7 @@ async function updateTodoController(req: Request, res: Response): Promise<void> 
         const todos: ITodo[] = await queryTodos()
 
         res.status(200).json({
-            message: "Todo deleted sucessfully",
+            message: "Todo updated sucessfully",
             updatedTodo: updatedTodo,
             todos: todos
         })
