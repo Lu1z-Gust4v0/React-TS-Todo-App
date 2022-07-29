@@ -2,6 +2,12 @@ import ITodo from "../types/todo";
 import Todo from "../models/todo";
 
 
+type UpdateData = {
+    title?: string;
+    description?: string;
+    status?: boolean;
+}
+
 async function queryTodos(filter?: any): Promise<ITodo[]> {
     try {
         const todos: ITodo[] = await Todo.find(filter)
@@ -42,9 +48,9 @@ async function deleteTodo(id: string): Promise<ITodo | null> {
     }
 }
 
-async function updateTodo(newData: ITodo, id: string): Promise<ITodo | null> {
+async function updateTodo(data: UpdateData, id: string): Promise<ITodo | null> {
     try {
-        const updatedTodo: ITodo | null = await Todo.findByIdAndUpdate({ _id: id }, newData)
+        const updatedTodo: ITodo | null = await Todo.findByIdAndUpdate({ _id: id }, data)
 
         return updatedTodo
 
@@ -53,4 +59,4 @@ async function updateTodo(newData: ITodo, id: string): Promise<ITodo | null> {
     }
 }
 
-export { queryTodos, createTodo, deleteTodo, updateTodo }
+export { queryTodos, createTodo, deleteTodo, updateTodo, UpdateData }

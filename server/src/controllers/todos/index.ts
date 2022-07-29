@@ -1,6 +1,12 @@
 import { Request, Response } from "express"
 import ITodo from "../../types/todo"
-import { queryTodos, createTodo, deleteTodo, updateTodo } from "../../services/todoDocument"
+import { 
+    queryTodos, 
+    createTodo, 
+    deleteTodo, 
+    updateTodo, 
+    UpdateData 
+} from "../../services/todoDocument"
 
 
 async function getTodosController(req: Request, res: Response): Promise<void> {
@@ -65,7 +71,7 @@ async function deleteTodoController(req: Request, res: Response): Promise<void> 
 async function updateTodoController(req: Request, res: Response): Promise<void> {
     try {    
         const id: string = req.params.id 
-        const data = req.body as Pick<ITodo, "userId" | "title" | "description" | "status">
+        const data: UpdateData = req.body
 
         const updatedTodo: ITodo | null = await updateTodo(data, id)
         const todos: ITodo[] = await queryTodos()
