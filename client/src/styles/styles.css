@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;500;700&display=swap');
+
+:root {
+
+    --primary: #00B0FF;    ;
+    --secondary: #747BFF;
+
+    --light: hsl(0, 0%, 75%);
+    --medium: hsl(0, 0%, 55%);
+    --bold: hsl(0, 0%, 35%);
+
+    --box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.4), 
+    0 2px 6px 2px rgba(60, 64, 67, 0.2);
+
+    --gradient-1: linear-gradient(to right bottom, #00b0ff, #00a6ff, #009aff, #1a8eff, #3c81ff, #4b7cff, #5a76ff, #6870ff, #6b73ff, #6e76ff, #7178ff, #747bff);
+    --gradient-2: linear-gradient(to right, #00b0ff, #00a6ff, #009aff, #1a8eff, #3c81ff, #4b7cff, #5a76ff, #6870ff, #6b73ff, #6e76ff, #7178ff, #747bff);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0 1rem;
+    background-image: var(--gradient-1);
+}
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    max-height: 450px;
+    padding: 2rem 0;
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    border-radius: 0.75rem;
+}
+
+.form-title {
+    font-size: 2rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.form-row label {
+    margin-left: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--medium);
+}
+
+.form-sub-row {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-sub-row img {
+    position: absolute;
+    left: 0.6rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.form-sub-row input {
+    outline: none;
+    border: none;
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    color: var(--primary);
+    width: 90%;
+    border-bottom: 2px solid var(--light);
+    transition: border 300ms ease-in;
+}
+
+.form-sub-row input:focus {
+    border-bottom: 2px solid var(--primary);
+}
+
+.form-row button {
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    align-self: center;
+    width: 90%;
+    padding: 0.5rem 1rem;
+    border-radius: 2em;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    background-image: var(--gradient-2);
+    background-size: 200%;
+    transition: background 300ms ease-in;
+}
+
+.form-row button:focus,
+.form-row button:hover {
+    background-position: right;
+}
+
+.login-form-container p {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--medium);
+}
+
+.login-form-container p a {
+    text-decoration: none;
+    color: var(--primary);
+    cursor: pointer;
+    transition: color 300ms ease-in;
+}
+
+.login-form-container p a:focus,
+.login-form-container p a:hover {
+    color: var(--secondary);
+}
+
+.form-sub-row input::placeholder {
+    color: var(--light);
+}
+
+@media screen and (min-width: 768px) {
+    .login-form-container {
+        max-height: 500px;
+        width: 350px;
+        padding: 2rem 1rem;
+    }
+
+    .form-title {
+        font-size: 2.5rem;
+    }
+}
