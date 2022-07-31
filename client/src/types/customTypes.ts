@@ -9,6 +9,13 @@ export interface LoginFormData {
     "password": string;
 }
 
+export interface RegisterFormData {
+    "username": string;
+    "email": string;
+    "password": string;
+    "repeatPassword": string;
+}
+
 export interface LoginComponentProps {
     setUserData: React.Dispatch<React.SetStateAction<UserData>>;
 }
@@ -21,4 +28,10 @@ export interface LoginFormProps {
 
 export interface HomeComponentProps {
     data: UserData;
+}
+
+export interface RegisterFormProps {
+    handleChange: (e: React.ChangeEvent) => void;
+    handleRegister: (e: React.FormEvent<HTMLFormElement>) => void;
+    data: RegisterFormData;
 }
