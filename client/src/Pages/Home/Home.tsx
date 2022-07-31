@@ -1,8 +1,11 @@
 import React from "react"
+import { HomeComponentProps } from "../../types/customTypes"
 
 
-export default function Home() {
+const Home: React.FC<HomeComponentProps> = ({ data }) => {
     return (
-        <h1>Hello World</h1>
+        <h1>{ JSON.stringify(data) }</h1>
     )
 }
+
+export default Home

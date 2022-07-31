@@ -1,30 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
+import { Link } from "react-router-dom"
 import userIcon from "../../assets/user-icon.svg" 
 import lockIcon from "../../assets/lock-icon.svg"
+import { LoginFormProps } from "../../types/customTypes"
 
 
-export default function LoginForm() {
-
-    const [ formData, setFormData ] = useState({"username": "", "password": ""})
-
-    function handleChange(e: React.ChangeEvent) {
-        const target = e.target as HTMLInputElement
-
-        setFormData((prevValue) => {
-            return {
-                ...prevValue,
-                [target.className]: target.value 
-            }
-        })
-    }
-    
-    function handleLogin(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault()
-
-        // TODO: check credentials and log user in if they are correct
-        window.alert(JSON.stringify(formData))
-    }
-
+const LoginForm: React.FC<LoginFormProps> = ({ data, handleChange, handleLogin }) => {
     return (
         <section className="login-form-container">
             <h1 className="form-title">Login</h1>            
@@ -43,7 +24,8 @@ export default function LoginForm() {
                             type="text" 
                             placeholder="Type your username"
                             onChange={handleChange}
-                            value={formData.username}
+                            value={data.username}
+                            required
                         />
                     </div>
                 </div>
@@ -57,7 +39,8 @@ export default function LoginForm() {
                             type="password" 
                             placeholder="Type your password"
                             onChange={handleChange}
-                            value={formData.password}
+                            value={data.password}
+                            required
                         />
                     </div>
                 </div>
@@ -65,7 +48,9 @@ export default function LoginForm() {
                     <button type="submit">login</button>
                 </div>
             </form>
-            <p>does not have an account? <a href="#">sign up</a></p>
+            <p>does not have an account? <Link to={"/register"}>sign up</Link></p>
         </section>
     )
 }
+
+export default LoginForm

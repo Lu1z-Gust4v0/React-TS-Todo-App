@@ -4,8 +4,8 @@ import RegisterForm from "./RegisterForm"
 
 export default function Register() {
     return (
-        <div className="page">
-             <RegisterForm />
-        </div>
+        <section className="register-page">
+            <RegisterForm />
+        </section>
     )
 }
