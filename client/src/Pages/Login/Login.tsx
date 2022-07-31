@@ -1,6 +1,11 @@
 import React from "react"
+import LoginForm from "./LoginForm"
 
 
-function Login() {
-    
+export default function Login() {
+    return (
+        <section className="login-page">
+            <LoginForm />
+        </section>
+    )
 }

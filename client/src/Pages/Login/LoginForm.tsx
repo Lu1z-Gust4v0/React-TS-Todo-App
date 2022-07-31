@@ -3,7 +3,7 @@ import userIcon from "../../assets/user-icon.svg"
 import lockIcon from "../../assets/lock-icon.svg"
 
 
-export function LoginForm() {
+export default function LoginForm() {
 
     const [ formData, setFormData ] = useState({"username": "", "password": ""})
 
