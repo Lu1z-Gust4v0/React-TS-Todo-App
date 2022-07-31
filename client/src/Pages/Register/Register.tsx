@@ -11,7 +11,16 @@ export default function Register() {
         "repeatPassword": ""
     })
     
-    const handleChange = (e: React.ChangeEvent) => {}
+    const handleChange = (e: React.ChangeEvent) => {
+        const target = e.target as HTMLInputElement
+
+        setFormData(prevValue => {
+            return {
+                ...prevValue,
+                [target.className]: target.value
+            }
+        })
+    }
 
     const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {}
 
