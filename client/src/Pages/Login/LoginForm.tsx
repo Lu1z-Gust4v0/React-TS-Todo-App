@@ -48,7 +48,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ data, handleChange, handleLogin }
                     <button type="submit">login</button>
                 </div>
             </form>
-            <p>does not have an account? <Link to={"/register"}>sign up</Link></p>
+            <p>does not have an account? <Link className="redirect-link" to={"/register"}>sign up</Link></p>
         </section>
     )
 }
