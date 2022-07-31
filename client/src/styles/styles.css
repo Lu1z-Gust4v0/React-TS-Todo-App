@@ -23,7 +23,8 @@
     font-family: "Poppins", sans-serif;
 }
 
-.login-page {
+.login-page, 
+.register-page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +34,8 @@
     background-image: var(--gradient-1);
 }
 
-.login-form-container {
+.login-form-container,
+.register-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,7 +51,8 @@
     font-size: 2rem;
 }
 
-.login-form {
+.login-form, 
+.register-form {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -119,21 +122,22 @@
     background-position: right;
 }
 
-.login-form-container p {
+.login-form-container p,
+.register-form-container p {
     margin-top: 1rem;
     font-size: 0.85rem;
     color: var(--medium);
 }
 
-.login-form-container p a {
+.redirect-link {
     text-decoration: none;
     color: var(--primary);
     cursor: pointer;
     transition: color 300ms ease-in;
 }
 
-.login-form-container p a:focus,
-.login-form-container p a:hover {
+.redirect-link:focus,
+.redirect-link:hover {
     color: var(--secondary);
 }
 
@@ -141,14 +145,40 @@
     color: var(--light);
 }
 
+.register-form-container {
+    height: 90vh;
+    padding: 0.5rem 0;
+}
+
+.register-form-container .form-title {
+    margin-bottom: 1rem;
+}
+
+.register-form .form-row {
+    padding: 0.25rem 0;
+}
+
+.register-form .form-row button {
+    margin-top: 1.5rem;
+}
+
 @media screen and (min-width: 768px) {
-    .login-form-container {
+    .login-form-container,
+    .register-form-container {
         max-height: 500px;
         width: 350px;
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
     }
 
     .form-title {
         font-size: 2.5rem;
+    }
+
+    .register-form .form-row {
+        padding: 0.5rem 0;
+    }
+    
+    .register-form .form-row button {
+        margin-top: 0.75rem;
     }
 }
