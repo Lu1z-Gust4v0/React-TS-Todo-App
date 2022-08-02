@@ -10,11 +10,11 @@ import Home from "./Pages/Home/Home"
 import Login from "./Pages/Login/Login"
 import Register from "./Pages/Register/Register"
 import "./styles/styles.css"
+import usePersistingState from "./Hooks/usePersistingState"
 
 
 export default function App() {
-    
-    const [ userData, setUserData ] = useState<UserData>({
+    const [ userData, setUserData ] = usePersistingState<UserData>("userData", {
         "username": " ",
         "id": " ",
         "loggedIn": false
