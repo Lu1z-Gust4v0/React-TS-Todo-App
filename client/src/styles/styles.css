@@ -312,6 +312,7 @@
     background-color: white;
     padding: 1.5rem 1rem;
     border-radius: 1rem;
+    box-shadow: var(--box-shadow);
 }
 
 
