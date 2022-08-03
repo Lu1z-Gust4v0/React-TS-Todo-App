@@ -39,3 +39,8 @@ export interface RegisterFormProps {
 export interface NavbarProps {
     username: string;
 }
+
+export interface TodoBoardProps {
+    active: boolean;
+    togglePopUp: () => void;
+}

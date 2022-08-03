@@ -2,17 +2,19 @@ import React from "react"
 import AddTodoPopUp from "./AddTodoPopUp"
 import TodoItem from "./TodoItem"
 import createIcon from "../../assets/create-icon.svg"
+import { TodoBoardProps } from "../../types/customTypes"
 
 
-const TodoBoard = () => {
+const TodoBoard: React.FC<TodoBoardProps> = ({ active, togglePopUp }) => {    
     return (
-        <div className="todo-board">
+        <div className={active ? "todo-board active": "todo-board"}>
             <div className="todo-board-row">
-                <button className="create-btn">
+                <h2>My todos</h2>
+                <button className="create-btn" onClick={togglePopUp}>
                     <img src={createIcon} alt="create icon" />
                 </button>
             </div>
-            <TodoItem/>
+            <AddTodoPopUp />
         </div>
     )    
 }
