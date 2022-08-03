@@ -28,7 +28,7 @@ export default function App() {
                     element={userData.loggedIn ? <Home data={userData}/> : <Navigate to="/login"/>}
                 />
                 <Route path="/login" element={<Login setUserData={setUserData}/>}/>
-                <Route path="/register" element={<Register/>}/>
+                <Route path="/register" element={<Register setUserData={setUserData}/>}/>
             </Routes>
         </BrowserRouter>
     )
