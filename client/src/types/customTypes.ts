@@ -65,11 +65,18 @@ export interface PopUpProps {
     data: CreateTodoFormData;
     togglePopUp: () => void;
     handleChange: (e: React.ChangeEvent) => void;
-    createTodo:  (data: CreateTodoFormData) => Promise<void>;
+    createTodo:  () => Promise<void>;
 }
 
 export interface TodoItemProps {
     todo: ITodo;
-    finishTodo: (id: string) => Promise<void>;
-    deleteTodo: (id: string) => Promise<void>
+    finishTodo: (id: string, status: boolean) => Promise<void>
+    removeTodo: (id: string) => Promise<void>
+}
+
+export interface ApiDataType {
+    status: string
+    message: string
+    todo?: ITodo
+    todos: ITodo[]
 }
