@@ -4,8 +4,8 @@ export interface ITodo {
     title: string;
     description: string;
     status: boolean;
-    createdAt?: Date;
-    updatedAt?: Date;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export interface UserData {
@@ -51,6 +51,7 @@ export interface NavbarProps {
 }
 
 export interface TodoBoardProps {
+    userId: string;
     active: boolean;
     togglePopUp: () => void;
 }
@@ -65,4 +66,10 @@ export interface PopUpProps {
     togglePopUp: () => void;
     handleChange: (e: React.ChangeEvent) => void;
     createTodo:  (data: CreateTodoFormData) => Promise<void>;
+}
+
+export interface TodoItemProps {
+    todo: ITodo;
+    finishTodo: (id: string) => Promise<void>;
+    deleteTodo: (id: string) => Promise<void>
 }

@@ -3,26 +3,15 @@ import AddTodoPopUp from "./AddTodoPopUp"
 import TodoItem from "./TodoItem"
 import createIcon from "../../assets/create-icon.svg"
 import { CreateTodoFormData, TodoBoardProps } from "../../types/customTypes"
+import useFormChange from "../../Hooks/useFormChange"
 
 
-const TodoBoard: React.FC<TodoBoardProps> = ({ active, togglePopUp }) => {    
- 
-    const [formData, setFormData] = useState({
+const TodoBoard: React.FC<TodoBoardProps> = ({ userId, active, togglePopUp }) => {    
+    const [formData, handleChange] = useFormChange<CreateTodoFormData>({
         "title": "",
         "description": ""
     })
- 
-    const handleChange = (e: React.ChangeEvent) => {
-        const target = e.target as HTMLInputElement | HTMLTextAreaElement
-        
-        setFormData((prevValue) => {
-            return {
-                ...prevValue,
-                [target.className]: target.value
-            }
-        })
-    }
-
+    
     const createTodo = async (data: CreateTodoFormData) => {}
 
     const popUpProps = {

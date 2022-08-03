@@ -2,26 +2,17 @@ import React, { useState } from "react"
 import LoginForm from "./LoginForm"
 import { useNavigate } from "react-router-dom"
 import { LoginComponentProps, LoginFormData } from "../../types/customTypes"
+import useFormChange from "../../Hooks/useFormChange"
 
 
 const Login: React.FC<LoginComponentProps> = ({ setUserData }) => {
     
-    const [ formData, setFormData ] = useState<LoginFormData>({
+    const [formData, handleChange] = useFormChange<LoginFormData>({
         "username": "",
         "password": ""
     })
-    const navigate = useNavigate()
 
-    const handleChange = (e: React.ChangeEvent): void => {
-        const target = e.target as HTMLInputElement
-        
-        setFormData(prevValue => {
-            return {
-                ...prevValue,
-                [target.className]: target.value
-            }
-        })
-    }
+    const navigate = useNavigate()
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault()

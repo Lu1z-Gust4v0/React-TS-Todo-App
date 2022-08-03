@@ -1,26 +1,27 @@
 import React from "react"
 import closeIcon from "../../assets/close-icon.svg"
 import checkIcon from "../../assets/check-icon.svg"
+import { TodoItemProps } from "../../types/customTypes"
 
 
-const TodoItem = () => {
+const TodoItem: React.FC<TodoItemProps> = ({ todo, finishTodo, deleteTodo }) => {
     return (
         <div className="todo-card">
             <div className="card-heading">
-                <h2>Todo item with a super super long name</h2>
-                <span className="timestamp">Aug 02 2022 23:37</span>
+                <h2>{todo.title}</h2>
+                <span className="timestamp">{todo.createdAt}</span>
             </div>
             <div className="card-body">
                 <div className="card-row">
                     <p className="description">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt minima minus adipisci omnis, commodi aperiam ut quod voluptate ea earum vero eaque nemo ipsum repellendus? Reprehenderi
+                        {todo.description}
                     </p>
                 </div>
                 <div className="card-row">
-                    <button className="finish-btn">
+                    <button className="finish-btn" onClick={() => finishTodo(todo._id)}>
                         <img src={checkIcon} alt="check icon" />
                     </button>
-                    <button className="delete-btn">
+                    <button className="delete-btn" onClick={() => deleteTodo(todo._id)}>
                         <img src={closeIcon} alt="close icon" />
                     </button>
                 </div>

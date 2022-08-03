@@ -11,6 +11,7 @@ const Home: React.FC<HomeComponentProps> = ({ data }) => {
     }
 
     const props = {
+        userId: data.id,
         active: active,
         togglePopUp: togglePopUp
     }
