@@ -35,3 +35,7 @@ export interface RegisterFormProps {
     handleRegister: (e: React.FormEvent<HTMLFormElement>) => void;
     data: RegisterFormData;
 }
+
+export interface NavbarProps {
+    username: string;
+}
