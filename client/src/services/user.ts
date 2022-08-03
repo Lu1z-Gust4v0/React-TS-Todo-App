@@ -10,7 +10,7 @@ const registerUser = async (credentials: RegisterFormData): Promise<AuthSystemRe
             throw new Error("Passwords don't match")
         }
 
-        const response: AxiosResponse<AuthSystemResponse> = await axios.post(`${BASE_URL}/login`, {
+        const response: AxiosResponse<AuthSystemResponse> = await axios.post(`${BASE_URL}/register`, {
             username: credentials.username,
             email: credentials.email,
             password: credentials.password
