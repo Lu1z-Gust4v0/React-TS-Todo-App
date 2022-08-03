@@ -380,3 +380,136 @@
 .popup-row textarea:focus {
     outline: 2px solid var(--primary);
 }
+
+.todo-board {
+    display: flex;
+    flex-direction: column;
+    height: 25rem;
+    width: 18.75rem;
+    padding: 1rem 0.75rem;
+    border-radius: 0.5rem;
+    overflow-y: auto;
+}
+
+.todo-board-row {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0 0.5rem;
+}
+
+
+.todo-board-row .create-btn {
+    position: relative;
+    align-self: center;
+    outline: none;
+    border: none;
+    margin-left: 1rem;
+    background: none;
+    cursor: pointer;
+}
+
+.todo-board-row .create-btn::before {
+    position: absolute;
+    top: 0;
+    left: -5rem;
+    content: "new todo";
+    color: var(--secondary);
+    padding: 0.1rem 0.25rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 0.25rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+}
+
+.todo-board-row .create-btn:hover::before {
+    opacity: 1;
+}
+
+.todo-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 0.5rem;
+}
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* border: 1px solid blue; */
+    padding: 1rem 0;
+}
+
+.card-heading h2 {
+    line-height: 1.5rem;
+    color: var(--bold);
+}
+
+.card-heading .timestamp {
+    padding: 0.5rem 0;
+    color: var(--secondary);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-row {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem 0;
+}
+
+.card-row .description {
+    color: var(--medium);
+}
+
+.card-row button {
+    position: relative;
+    align-self: center;
+    outline: none;
+    border: none;
+    margin-inline: 0.5rem;
+    background: none;
+    cursor: pointer;
+}
+
+.card-row button::before {
+    position: absolute;
+    top: -1.75rem;
+    background-color: white;
+    padding: 0.1rem 0.25rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 0.25rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+}
+
+.card-row button:hover::before {
+    opacity: 1;
+}
+
+.card-row .finish-btn::before {
+    content: "finish todo";
+    color: var(--primary);
+    left: -3.5rem;
+}
+
+.card-row .delete-btn::before {
+    content: "delete todo";
+    color: red;
+    left: -5.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .todo-board {
+        height: 30rem;
+        width: 25rem;
+    }   
+}
