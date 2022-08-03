@@ -39,7 +39,7 @@ const AddTodoPopUp: React.FC<PopUpProps> = ({ data, togglePopUp, handleChange, c
                     </textarea>
                 </div>
                 <div className="popup-row">
-                    <button onClick={() => createTodo(data)}>Add Todo</button>
+                    <button onClick={() => createTodo()}>Add Todo</button>
                 </div>
             </div>
         </div>

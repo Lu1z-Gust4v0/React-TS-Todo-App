@@ -8,15 +8,12 @@ const getTodos = async (userId: string): Promise<ApiDataType> => {
     try {
         const response: AxiosResponse<ApiDataType> = await axios.get(`${BASE_URL}/get-todos/${userId}`)
 
-        if (response.status !== 200) {
-            throw new Error(response.data.message)
-        }
-
         return response.data
 
-
     } catch (err: any) {
-        throw new Error(err.message || "Unknown error")
+        throw new Error(
+            err?.response?.data?.message || err.message || "Uknown error"
+        )
     }
 }
 
@@ -29,14 +26,12 @@ const addTodo = async (data: Pick<ITodo, "userId" | "title" | "description">): P
             "status": true
         }) 
 
-        if (response.status !== 201) {
-            throw new Error(response.data.message)
-        }
-
         return response.data
 
     } catch (err: any) {
-        throw new Error(err.message || "Unknown error")            
+        throw new Error(
+            err?.response?.data?.message || err.message || "Uknown error"
+        )    
     }
 }
 
@@ -51,7 +46,9 @@ const deleteTodo = async (id: string): Promise<ApiDataType> => {
         return response.data
 
     } catch (err: any) {
-        throw new Error(err.message || "Unknown error")            
+        throw new Error(
+            err?.response?.data?.message || err.message || "Uknown error"
+        )    
     }
 } 
 
@@ -61,15 +58,15 @@ const updateTodo = async (id: string, status: boolean): Promise<ApiDataType> => 
             status: status
         })
 
-        if (response.status !== 200) {
-            throw new Error(response.data.message)
-        }
-
         return response.data
 
     } catch (err: any) {
-        throw new Error(err.message || "Unknown error")            
+        throw new Error(
+            err?.response?.data?.message || err.message || "Uknown error"
+        )        
     }
 }
+
+
 
 export { getTodos, addTodo, deleteTodo, updateTodo }

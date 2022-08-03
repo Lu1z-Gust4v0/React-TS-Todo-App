@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios"
 import { AuthSystemResponse, LoginFormData, RegisterFormData } from "../types/customTypes"
 
 
-const BASE_URL = "http://localhost/"
+const BASE_URL = "http://localhost:4000"
 
 const registerUser = async (credentials: RegisterFormData): Promise<AuthSystemResponse> => {
     try {
@@ -16,28 +16,24 @@ const registerUser = async (credentials: RegisterFormData): Promise<AuthSystemRe
             password: credentials.password
         })
         
-        if (response.status !== 201) {
-            throw new Error(response.data.message)
-        }
-
         return response.data
 
     } catch (err: any) {
-        throw new Error(err.message || "Unknown error")
+        throw new Error(
+            err?.response?.data?.message || err.message || "Uknown error"
+        )
     }
 }
 
 const logUserIn = async (credentials: LoginFormData): Promise<AuthSystemResponse> => {
     try {
         const response: AxiosResponse<AuthSystemResponse> = await axios.post(`${BASE_URL}/login`, credentials)
-
-        if (response.status !== 200) {
-            throw new Error(response.data.message)
-        }
-
+        
         return response.data
     } catch (err: any) {
-        throw new Error(err.message || "Unknown error")
+        throw new Error(
+            err?.response?.data?.message || err.message || "Uknown error"
+        )
     }
 }
 
