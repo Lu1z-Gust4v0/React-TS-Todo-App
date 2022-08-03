@@ -11,7 +11,7 @@ async function registerController(req: Request, res: Response): Promise<void> {
 
         res.status(201).json({
             message: "Registered sucessfully",
-            newUser: newUser
+            user: newUser
         })
 
     } catch (err: any) {
