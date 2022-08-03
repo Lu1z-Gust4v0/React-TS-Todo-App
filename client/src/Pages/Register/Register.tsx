@@ -1,10 +1,12 @@
 import React, { useState } from "react"
 import useFormChange from "../../Hooks/useFormChange"
-import { RegisterFormData } from "../../types/customTypes"
+import { registerUser } from "../../services/user"
+import { RegisterComponentProps, RegisterFormData } from "../../types/customTypes"
+import { useNavigate } from "react-router-dom"
 import RegisterForm from "./RegisterForm"
 
 
-export default function Register() {
+const Register: React.FC<RegisterComponentProps> = ({ setUserData }) => {
     const [formData, handleChange] = useFormChange<RegisterFormData>({
         "username": "",
         "email": "",
@@ -12,7 +14,27 @@ export default function Register() {
         "repeatPassword": ""
     })
 
-    const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {}
+    const navigate = useNavigate()
+
+    const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+        try {
+            e.preventDefault()
+            const { user, message } = await registerUser(formData)
+            
+            setUserData(() => {
+                return {
+                    username: user.username,
+                    id: user._id,
+                    loggedIn: true
+                }
+            })
+            window.alert(message)
+            // redirect user to home page
+            navigate("/")            
+        } catch (err: any) {
+            window.alert(err.message || "Unknown error")
+        }
+    }
 
     return (
         <section className="register-page">
@@ -24,3 +46,5 @@ export default function Register() {
         </section>
     )
 }
+
+export default Register

@@ -8,6 +8,15 @@ export interface ITodo {
     updatedAt?: string;
 }
 
+export interface IUser {
+    _id: string;
+    username: string;
+    password: string;
+    email: string;
+    createdAt?: string;
+    updatedAt?: string;
+}
+
 export interface UserData {
     username: string; 
     id: string;
@@ -30,9 +39,13 @@ export interface LoginComponentProps {
     setUserData: React.Dispatch<React.SetStateAction<UserData>>;
 }
 
+export interface RegisterComponentProps {
+    setUserData: React.Dispatch<React.SetStateAction<UserData>>;    
+}
+
 export interface LoginFormProps {
     handleChange: (e: React.ChangeEvent) => void;
-    handleLogin: (e: React.FormEvent<HTMLFormElement>) => void;
+    handleLogin: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
     data: LoginFormData;
 }
 
@@ -42,7 +55,7 @@ export interface HomeComponentProps {
 
 export interface RegisterFormProps {
     handleChange: (e: React.ChangeEvent) => void;
-    handleRegister: (e: React.FormEvent<HTMLFormElement>) => void;
+    handleRegister: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
     data: RegisterFormData;
 }
 
@@ -79,4 +92,10 @@ export interface ApiDataType {
     message: string
     todo?: ITodo
     todos: ITodo[]
+}
+
+export interface AuthSystemResponse {
+    status: string
+    message: string
+    user: IUser
 }
