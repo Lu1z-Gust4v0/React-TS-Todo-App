@@ -1,34 +1,45 @@
 import React from "react"
 import closeIcon from "../../assets/close-icon.svg"
+import { PopUpProps } from "../../types/customTypes"
 
 
-const AddTodoPopUp = () => {
+const AddTodoPopUp: React.FC<PopUpProps> = ({ data, togglePopUp, handleChange, createTodo }) => {
     return (
         <div className="popup-container">
             <div className="popup-heading">
                 <h3>Create a new todo</h3>
-                <button>
+                <button onClick={togglePopUp}>
                     <img src={closeIcon} alt="close icon"/>
                 </button>
             </div>
             <div className="popup-body">
                 <div className="popup-row">
                     <label htmlFor="add-todo-title">title</label>
-                    <input id="add-todo-title" type="text" placeholder="type a title"/>
+                    <input 
+                        className="title"
+                        id="add-todo-title" 
+                        type="text" 
+                        placeholder="type a title"
+                        onChange={handleChange}
+                        value={data.title}
+                    />
                 </div>
                 <div className="popup-row">
                     <label htmlFor="add-todo-description">description</label>
                     <textarea 
+                        className="description"
                         name="add-todo-description" 
                         id="add-todo-description" 
                         placeholder="type a description"
                         cols={20} 
                         rows={5}
+                        onChange={handleChange}
+                        value={data.description}
                     >
                     </textarea>
                 </div>
                 <div className="popup-row">
-                    <button>Add Todo</button>
+                    <button onClick={() => createTodo(data)}>Add Todo</button>
                 </div>
             </div>
         </div>

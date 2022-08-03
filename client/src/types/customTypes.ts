@@ -1,3 +1,13 @@
+export interface ITodo {
+    _id: string;
+    userId: string;
+    title: string;
+    description: string;
+    status: boolean;
+    createdAt?: Date;
+    updatedAt?: Date;
+}
+
 export interface UserData {
     username: string; 
     id: string;
@@ -43,4 +53,16 @@ export interface NavbarProps {
 export interface TodoBoardProps {
     active: boolean;
     togglePopUp: () => void;
+}
+
+export interface CreateTodoFormData {
+    title: string;
+    description: string;
+}
+
+export interface PopUpProps {
+    data: CreateTodoFormData;
+    togglePopUp: () => void;
+    handleChange: (e: React.ChangeEvent) => void;
+    createTodo:  (data: CreateTodoFormData) => Promise<void>;
 }
