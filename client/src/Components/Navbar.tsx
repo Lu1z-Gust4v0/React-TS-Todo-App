@@ -1,9 +1,16 @@
 import React from "react"
 import { NavbarProps } from "../types/customTypes"
 import reactLogo from "../assets/react-icon.svg"
-
+import { useNavigate } from "react-router-dom"
 
 const Navbar: React.FC<NavbarProps> = ({ username }) => {
+    
+    const navigate = useNavigate()
+    const logoutUser = () => {
+        sessionStorage.clear()
+        navigate("/login")
+    }
+
     return (
         <nav className="navbar-container">
             <div className="logo-container">
@@ -12,7 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({ username }) => {
             </div>
             <ul className="navbar">
                 <li><p>Welcome, <span>{username}</span></p></li>
-                <li><button>logout</button></li>
+                <li><button onClick={logoutUser}>logout</button></li>
             </ul>
         </nav>
     )
