@@ -2,6 +2,7 @@ import React from "react"
 import { RegisterFormProps } from "../../types/customTypes"
 import userIcon from "../../assets/user-icon.svg" 
 import lockIcon from "../../assets/lock-icon.svg"
+import envelopeIcon from "../../assets/envelope-icon.svg"
 import { Link } from "react-router-dom"
 
 
@@ -33,7 +34,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ handleChange, handleRegiste
                 <div className="form-row">
                     <label htmlFor="email">email</label>
                     <div className="form-sub-row">
-                        <img className="lock-icon" src={lockIcon} alt="padlock icon" />
+                        <img className="lock-icon" src={envelopeIcon} alt="padlock icon" />
                         <input 
                             className="email" 
                             id="email" 
