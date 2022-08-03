@@ -16,9 +16,9 @@ const TodoBoard: React.FC<TodoBoardProps> = ({ userId, active, togglePopUp }) =>
     
     useEffect(() => {
         const fetchTodos = async (userId: string) => {
-            const data = await getTodos(userId) 
+            const { todos } = await getTodos(userId) 
             
-            setTodoList(data.todos)
+            setTodoList(todos)
         }
 
         fetchTodos(userId).catch(console.log)
@@ -27,12 +27,12 @@ const TodoBoard: React.FC<TodoBoardProps> = ({ userId, active, togglePopUp }) =>
     
     const createTodo = async () => {
         try {
-            const response = await addTodo({
+            const { message } = await addTodo({
                 ...formData,
                 userId: userId
             })
 
-            window.alert(response.message)
+            window.alert(message)
 
         } catch (err: any) {
             throw new Error(err.message || "Unknown error")
@@ -41,9 +41,9 @@ const TodoBoard: React.FC<TodoBoardProps> = ({ userId, active, togglePopUp }) =>
 
     const removeTodo = async (id: string) => {
         try {
-            const response = await deleteTodo(id)
+            const { message } = await deleteTodo(id)
 
-            window.alert(response.message)
+            window.alert(message)
         } catch (err: any) {
             throw new Error(err.message || "Unknown error")
         }
@@ -51,9 +51,9 @@ const TodoBoard: React.FC<TodoBoardProps> = ({ userId, active, togglePopUp }) =>
 
     const finishTodo = async (id: string, status: boolean) => {
         try {
-            const response = await updateTodo(id, status)
+            const { message } = await updateTodo(id, status)
 
-            window.alert(response.message)
+            window.alert(message)
         } catch (err: any) {
             throw new Error(err.message || "Unknown error")
         }
