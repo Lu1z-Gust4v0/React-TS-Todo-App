@@ -364,28 +364,28 @@
     outline: none;
     border: none;
     padding: 0.25rem;
-    color: var(--primary);
+    color: var(--secondary);
     border: 1px solid var(--light);
     transition: outline 200ms ease-in;
     border-radius: 0.5rem;
 }
 
 .popup-row input:focus {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--secondary);
 }
 
 .popup-row textarea {
     resize: none;
     outline: none;
     padding: 0.25rem 0.5rem;
-    color: var(--primary);
+    color: var(--secondary);
     border: 1px solid var(--light);
     transition: outline 200ms ease-in;
     border-radius: 0.5rem;
 }
 
 .popup-row textarea:focus {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--secondary);
 }
 
 .todo-board {
@@ -461,7 +461,7 @@
     padding: 0.5rem 1rem;
     margin-block: 1rem;
     box-shadow: var(--box-shadow);
-    border-radius: 0.5rem; 
+    border-radius: 0.5rem;
 }
 
 
