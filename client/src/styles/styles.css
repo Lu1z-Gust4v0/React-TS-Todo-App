@@ -315,6 +315,7 @@
     box-shadow: var(--box-shadow),  
         0 0 0 1000vh rgba(0, 0, 0, 0.2);
     transition: opacity 200ms ease-in;
+    z-index: 99;
 }
 
 .todo-board.active .popup-container {
@@ -438,7 +439,7 @@
     opacity: 1;
 }
 
-/* disable create-btn and pseudo-element when the popup is active */
+/* Disable todo-board buttons when the popup is active */
 
 .todo-board.active .create-btn {
     pointer-events: none;
@@ -448,15 +449,28 @@
     opacity: 0;
 }
 
+.todo-board.active .card-row button {
+    pointer-events: none;
+}
+
 /* ------------------- */
 
 .todo-card {
     display: flex;
     flex-direction: column;
     padding: 0.5rem 1rem;
-    margin-block: 1.5rem;
+    margin-block: 1rem;
     box-shadow: var(--box-shadow);
-    border-radius: 0.5rem;
+    border-radius: 0.5rem; 
+}
+
+
+/* todo-card disabled */
+.todo-card.disabled .card-heading h2, 
+.todo-card.disabled .timestamp, 
+.todo-card.disabled .description {
+    color: var(--light);
+    text-decoration: line-through;
 }
 
 .card-heading {
@@ -464,7 +478,6 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    /* border: 1px solid blue; */
     padding: 1rem 0;
 }
 
@@ -485,7 +498,6 @@
 
 .card-row {
     display: flex;
-    justify-content: flex-end;
     padding: 0.5rem 0;
 }
 
@@ -501,6 +513,10 @@
     margin-inline: 0.5rem;
     background: none;
     cursor: pointer;
+}
+
+.card-row .finish-btn {
+    margin-left: auto;
 }
 
 .card-row button::before {
@@ -520,16 +536,17 @@
 }
 
 .card-row .finish-btn::before {
-    content: "finish todo";
+    content: "toggle";
     color: var(--primary);
-    left: -3.5rem;
+    left: -3rem;
 }
 
 .card-row .delete-btn::before {
-    content: "delete todo";
+    content: "delete";
     color: red;
-    left: -5.5rem;
+    left: -3.5rem;
 }
+
 
 @media screen and (min-width: 768px) {
     .todo-board {

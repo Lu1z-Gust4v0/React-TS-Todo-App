@@ -22,6 +22,7 @@ const AddTodoPopUp: React.FC<PopUpProps> = ({ data, togglePopUp, handleChange, c
                         placeholder="type a title"
                         onChange={handleChange}
                         value={data.title}
+                        required
                     />
                 </div>
                 <div className="popup-row">
@@ -35,6 +36,7 @@ const AddTodoPopUp: React.FC<PopUpProps> = ({ data, togglePopUp, handleChange, c
                         rows={5}
                         onChange={handleChange}
                         value={data.description}
+                        required
                     >
                     </textarea>
                 </div>

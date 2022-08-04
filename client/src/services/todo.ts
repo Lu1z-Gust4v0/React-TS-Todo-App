@@ -54,7 +54,7 @@ const deleteTodo = async (id: string): Promise<ApiDataType> => {
 
 const updateTodo = async (id: string, status: boolean): Promise<ApiDataType> => {
     try {
-        const response: AxiosResponse<ApiDataType> = await axios.post(`${BASE_URL}/edit-todo/${id}`, {
+        const response: AxiosResponse<ApiDataType> = await axios.put(`${BASE_URL}/edit-todo/${id}`, {
             status: status
         })
 

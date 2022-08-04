@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect } from "react"
 import AddTodoPopUp from "./AddTodoPopUp"
 import TodoItem from "./TodoItem"
 import createIcon from "../../assets/create-icon.svg"
-import { ApiDataType, CreateTodoFormData, ITodo, TodoBoardProps } from "../../types/customTypes"
+import { CreateTodoFormData, ITodo, TodoBoardProps } from "../../types/customTypes"
 import useFormChange from "../../Hooks/useFormChange"
 import { addTodo, getTodos, deleteTodo, updateTodo } from "../../services/todo"
 
@@ -13,7 +13,7 @@ const TodoBoard: React.FC<TodoBoardProps> = ({ userId, active, togglePopUp }) =>
         "description": ""
     })
     const [todoList, setTodoList] = useState<ITodo[]>([])
-    
+
     useEffect(() => {
         const fetchTodos = async (userId: string) => {
             const { todos } = await getTodos(userId) 
@@ -32,7 +32,9 @@ const TodoBoard: React.FC<TodoBoardProps> = ({ userId, active, togglePopUp }) =>
                 userId: userId
             })
 
+            togglePopUp()
             window.alert(message)
+            window.location.reload()
 
         } catch (err: any) {
             throw new Error(err.message || "Unknown error")
@@ -44,16 +46,20 @@ const TodoBoard: React.FC<TodoBoardProps> = ({ userId, active, togglePopUp }) =>
             const { message } = await deleteTodo(id)
 
             window.alert(message)
+            window.location.reload()
+
         } catch (err: any) {
             throw new Error(err.message || "Unknown error")
         }
     }
 
-    const finishTodo = async (id: string, status: boolean) => {
+    const toggleTodo = async (id: string, status: boolean) => {
         try {
             const { message } = await updateTodo(id, status)
 
             window.alert(message)
+            window.location.reload()
+            
         } catch (err: any) {
             throw new Error(err.message || "Unknown error")
         }
@@ -65,7 +71,7 @@ const TodoBoard: React.FC<TodoBoardProps> = ({ userId, active, togglePopUp }) =>
                 key={todo._id}
                 todo={todo}
                 removeTodo={removeTodo}
-                finishTodo={finishTodo}
+                toggleTodo={toggleTodo}
             />
         )
     })

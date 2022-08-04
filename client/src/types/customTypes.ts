@@ -83,7 +83,7 @@ export interface PopUpProps {
 
 export interface TodoItemProps {
     todo: ITodo;
-    finishTodo: (id: string, status: boolean) => Promise<void>
+    toggleTodo: (id: string, status: boolean) => Promise<void>
     removeTodo: (id: string) => Promise<void>
 }
 

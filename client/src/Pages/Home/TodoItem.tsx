@@ -4,9 +4,9 @@ import checkIcon from "../../assets/check-icon.svg"
 import { TodoItemProps } from "../../types/customTypes"
 
 
-const TodoItem: React.FC<TodoItemProps> = ({ todo, finishTodo, removeTodo }) => {
+const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleTodo, removeTodo }) => {    
     return (
-        <div className="todo-card">
+        <div className={todo.status ? "todo-card" : "todo-card disabled"}>
             <div className="card-heading">
                 <h2>{todo.title}</h2>
                 <span className="timestamp">{todo.createdAt}</span>
@@ -18,7 +18,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, finishTodo, removeTodo }) => 
                     </p>
                 </div>
                 <div className="card-row">
-                    <button className="finish-btn" onClick={() => finishTodo(todo._id, todo.status)}>
+                    <button className="finish-btn" onClick={() => toggleTodo(todo._id, !todo.status)}>
                         <img src={checkIcon} alt="check icon" />
                     </button>
                     <button className="delete-btn" onClick={() => removeTodo(todo._id)}>
