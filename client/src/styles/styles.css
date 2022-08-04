@@ -315,11 +315,12 @@
     box-shadow: var(--box-shadow),  
         0 0 0 1000vh rgba(0, 0, 0, 0.2);
     transition: opacity 200ms ease-in;
-    z-index: 99;
+    z-index: -1;
 }
 
 .todo-board.active .popup-container {
     opacity: 1;
+    z-index: 99;
 }
 
 .popup-heading {
@@ -515,7 +516,7 @@
     cursor: pointer;
 }
 
-.card-row .finish-btn {
+.card-row .toggle-btn {
     margin-left: auto;
 }
 
@@ -535,7 +536,7 @@
     opacity: 1;
 }
 
-.card-row .finish-btn::before {
+.card-row .toggle-btn::before {
     content: "toggle";
     color: var(--primary);
     left: -3rem;

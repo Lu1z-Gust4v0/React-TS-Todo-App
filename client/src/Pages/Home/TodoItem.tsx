@@ -32,7 +32,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleTodo, removeTodo }) => 
                     </p>
                 </div>
                 <div className="card-row">
-                    <button className="finish-btn" onClick={() => toggleTodo(todo._id, !todo.status)}>
+                    <button className="toggle-btn" onClick={() => toggleTodo(todo._id, !todo.status)}>
                         <img src={checkIcon} alt="check icon" />
                     </button>
                     <button className="delete-btn" onClick={() => removeTodo(todo._id)}>
